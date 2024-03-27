@@ -1,0 +1,25 @@
+.table{
+    thead{
+        tr{ 
+
+            th{
+                border-color: black;
+                font-family: 'Red Rose';
+            }  
+            .text{
+                color: blue;
+            }
+        }
+    }
+    tbody{
+        tr{
+            td{
+                font-weight: bold;
+            }
+        }
+    }
+
+}
+td {
+    max-width: 200px;
+}

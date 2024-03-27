@@ -1,0 +1,40 @@
+<div class = 'container-fluid'>
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="formulario">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" formControlName="nombre" [class.is-invalid]="mostrarErrores && formulario.get('nombre')?.invalid" title="Introduce el nombre aquí">
+                    <span class="text-danger" *ngIf="mostrarErrores && formulario.get('nombre')?.invalid">El nombre es requerido.</span>
+                </div>
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" formControlName="apellido" [class.is-invalid]="mostrarErrores && formulario.get('apellido')?.invalid" title="Introduce el apellido aquí">
+                    <span class="text-danger" *ngIf="mostrarErrores && formulario.get('apellido')?.invalid">El apellido es requerido.</span>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                </div>                
+                <div class="mb-3 form-check">
+                    <input type="checkbox" formControlName="quiereContacto" class="form-check-input" id="proporcionaDatos">
+                    <label class="form-check-label" for="proporcionaDatos">¿Desea contacto?</label>
+                </div>                
+                <div class="mb-3" *ngIf="quiereContacto">
+                    <label for="correo" class="form-label">Dirección de correo</label>
+                    <input type="email" class="form-control" id="correo" formControlName="email" aria-describedby="correoHelp">
+                    <div id="correoHelp" class="form-text">Nunca compartiremos tu correo con nadie.</div>
+                </div>
+                <div class="mb-3" *ngIf="quiereContacto">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="number" class="form-control" id="telefono" formControlName="telefono" aria-describedby="telefonoHelp">
+                    <div id="telefonoHelp" class="form-text">Tu teléfono está seguro con nosotros</div>
+                </div>                
+                <div class="d-md-block">
+                    <button class="btn btn-primary" type="button" (click)="registra()">Registra Cliente</button>
+                </div>         
+            </form>  
+        </div>
+    </div>     
+ </div>
+    

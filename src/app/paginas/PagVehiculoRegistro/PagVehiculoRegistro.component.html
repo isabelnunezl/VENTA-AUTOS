@@ -1,0 +1,85 @@
+<div class="card">
+  <div class="card-header">
+    <span style="font-size: large; font-weight: 625;">Creación de Vehículo</span>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <form [formGroup]="formulario">
+          <div class="mb-3 row">
+            <label for="staticCodigo" class="col-sm-2 col-form-label"><strong>Código:</strong></label>
+            <div class="col-sm-10">
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" id="staticCodigo" name="codigo" formControlName="codigo" [class.is-invalid]="mostrarErrores && formulario.get('codigo')?.invalid" title="Introduce el código aquí">
+              </div>
+              <span class="text-danger" *ngIf="mostrarErrores && formulario.get('codigo')?.invalid">El código es requerido.</span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticMarca" class="col-sm-2 col-form-label"><strong>Marca:</strong></label>
+            <div class="col-sm-10">
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" id="staticMarca" name="marca" formControlName="marca" [class.is-invalid]="mostrarErrores && formulario.get('marca')?.invalid" title="Introduce la marca aquí">
+              </div>
+              <span class="text-danger" *ngIf="mostrarErrores && formulario.get('marca')?.invalid">La marca es requerida.</span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticModelo" class="col-sm-2 col-form-label"><strong>Modelo:</strong></label>
+            <div class="col-sm-10">
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" id="staticModelo" name="modelo" formControlName="modelo" [class.is-invalid]="mostrarErrores && formulario.get('modelo')?.invalid" title="Introduce el modelo aquí">
+              </div>
+              <span class="text-danger" *ngIf="mostrarErrores && formulario.get('modelo')?.invalid">El modelo es requerido.</span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticAnio" class="col-sm-2 col-form-label"><strong>Año:</strong></label>
+            <div class="col-sm-10">
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" id="staticAnio" name="anio" formControlName="anio" [class.is-invalid]="mostrarErrores && formulario.get('anio')?.invalid" title="Introduce el año aquí">
+              </div>
+              <span class="text-danger" *ngIf="mostrarErrores && formulario.get('anio')?.invalid">El año es requerido.</span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticKilometraje" class="col-sm-2 col-form-label"><strong>Kilometraje:</strong></label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="staticKilometraje" name="kilometraje" [class.is-invalid]="mostrarErrores && formulario.get('kilometraje')?.invalid" formControlName="kilometraje" title="Introduce el kilometraje aquí">
+              <span class="text-danger" *ngIf="mostrarErrores && formulario.get('kilometraje')?.invalid">La calificación debe estar entre 0 y 5.</span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticPrecio" class="col-sm-2 col-form-label"><strong>Precio:</strong></label>
+            <div class="col-sm-10">
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" id="staticPrecio" name="precio" formControlName="precio" [class.is-invalid]="mostrarErrores && formulario.get('precio')?.invalid" title="Introduce el precio aquí">
+              </div>
+              <span class="text-danger" *ngIf="mostrarErrores && formulario.get('precio')?.invalid">El precio es requerido.</span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticFoto" class="col-sm-2 col-form-label"><strong>Foto:</strong></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="staticFoto" name="foto" formControlName="foto" title="Introduce la foto aquí">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="staticCalificacion" class="col-sm-2 col-form-label"><strong>Calificación:</strong></label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="staticCalificacion" name="calificacion" formControlName="calificacion" title="Introduce la calificación aquí" [class.is-invalid]="mostrarErrores && formulario.get('calificacion')?.invalid">
+              <span class="text-danger" *ngIf="mostrarErrores && formulario.get('calificacion')?.invalid">La calificación debe estar entre 0 y 5.</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="d-grid">
+          <button class="btn btn-primary" (click)="guardar()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

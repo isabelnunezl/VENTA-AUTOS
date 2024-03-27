@@ -1,0 +1,98 @@
+<div class="card">
+  <div class="card-header" style="font-family: 'Red Rose';">
+    Lista de Autómoviles
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label" style="font-family: 'Red Rose';">Filtrar por</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Marca"
+          [(ngModel)]="filtro" (blur)="consultarVehiculos()">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <strong style="font-family: 'Red Rose';">Filtrado por:</strong> {{filtro}}
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-2">
+        <a [routerLink]="['/vehiculo/']" class="btn btn-info">Nuevo vehículo</a>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-sm-12">
+        <table class="table table-white">
+          <thead>
+            <tr>
+              <td colspan="8"></td>
+              <td>
+                <div class="row">
+                  <div class="col">
+                    <select class="form-select" [(ngModel)]="rows" (change)="consultarVehiculos()">
+                      <option value="5">5</option>
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="100">100</option>
+                    </select>                    
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <button class="btn btn-primary btn-xs" 
+                  (click)="mostrar()" [innerText]="mostrarImagen ? 'Ocultar imágenes': 'Mostrar imágenes'" >
+                </button>
+              </th>
+              <th class="text">CÓDIGO</th>
+              <th class="text">MARCA</th>
+              <th class="text">MODELO</th>
+              <th class="text">AÑO</th>
+              <th class="text">KILOMETRAJE</th>
+              <th class="text">PRECIO</th>
+              <th class="text">CALIFICACIÓN</th>
+              <th class="text">ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listaVehiculos">
+              <td> <img [src]="item.foto" style="width: 100px;" *ngIf="mostrarImagen"></td>
+              <td>
+                <a [routerLink]="['/vehiculo/'+item.codigo]"> {{item.codigo}}</a>
+              </td>
+              <td>{{item.marca}}</td>
+              <td>{{item.modelo}}</td>
+              <td [innerText]="item.anio"></td>
+              <td>{{item.kilometraje | number}}</td>              
+              <td>{{item.precio | currency}}</td>
+              <td>
+                <app-calificacion [calificacion]="item.calificacion"></app-calificacion>
+              </td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-info" [routerLink]="['/vehiculos/'+item.codigo]">Editar</button>
+                  <button type="button" class="btn btn-danger" (click)="eliminar(item.codigo)">Eliminar</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item"><a class="page-link" (click)="atras()">Atrás</a></li>
+                    <li class="page-item" *ngFor="let pagina of listaPaginas" [ngClass]="{'active': pagina === page}"><a class="page-link" (click)="cambiarPagina(pagina)">{{pagina}}</a></li>
+                    <li class="page-item"><a class="page-link" (click)="siguiente()">Siguiente</a></li>
+                  </ul>
+                </nav>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
